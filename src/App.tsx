@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import NavBar from './components/NavBar';
 import AboutPage from './pages/AboutPage';
 import CoordinateDetailsPage from './pages/CoordinateDetailPage';
-import SimpleMap from './components/simpleMap';
+import HomePage from './pages/HomePage';
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
       <Router>
       <NavBar/>
       <Routes>
-        <Route path='/' element={<SimpleMap {...{lat: -5.551, lng: 114.60}}/>}/>
+        <Route path='/' element={<HomePage/>}/>
         <Route path='/detail' element={<CoordinateDetailsPage/>}/>
         <Route path='/about' element={<AboutPage/>}/>
       </Routes>
