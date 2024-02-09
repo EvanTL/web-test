@@ -13,8 +13,8 @@ const NavBar = () => {
                 <li><Link to={'/about'} className=" text-[#F8BE1A] font-bold uppercase text-xl">Tentang Kami</Link></li>
             </ul>
         </div>
-        <div className="absolute top-0 bg-no-repeat w-full">
-            <img src={banner} alt="kaleka copyright" className="h-96 lg:h-full lg:object-cover"/>
+        <div className="absolute top-0 w-full">
+            <img src={banner} alt="kaleka copyright" className="h-96 lg:h-full lg:object-cover lg:w-full"/>
         </div>
         </>
     )
