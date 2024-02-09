@@ -4,11 +4,17 @@ import 'leaflet/dist/leaflet.css'
 import type { LatLngLiteral } from "leaflet";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { useCoordinateContext } from "../context/CoordinateContext";
+import Banner from "./Banner";
 
 function SimpleMap(props: LatLngLiteral) {
 
     //Using state to house data fetched from API
     const [coordinates, setCoordinates] = useState([])
+
+    //Using context to pass data to detail page
+    const {setSingleCoordinate, singleCoordinate} = useCoordinateContext()
+    console.log(singleCoordinate)
 
     /* Fetches data from API for coordinates
     * wrapped in useEffect() with empty dependency array to prevent
@@ -24,16 +30,15 @@ function SimpleMap(props: LatLngLiteral) {
         })
         .catch(err => console.log(err))
     }, [])
-
-    const coordetail = () => {
-        
-    }
     
     return(
         <>
-        <div className="relative bg-white top-[314px] h-[600px]">
+        <Banner title={null}/>
+        <div className="relative bg-white lg:top-[278px] h-[600px]">
             <div className="relative top-[50px]">
-            <MapContainer center={[props.lat, props.lng]} zoom={5} style={{height: "477px", width: "828px", left: "380px"}}>
+            <div className="h-[477px] lg:flex lg:justify-center">
+            <MapContainer center={[props.lat, props.lng]} zoom={5} 
+            className="object-contain h-[477px] lg:w-[1024px] align-middle">
             <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -47,9 +52,17 @@ function SimpleMap(props: LatLngLiteral) {
                 coordinates.length > 0 && coordinates.map((data: any) => {
                     return(
                         <>
-                        <Circle center={[data.coordinates[1], data.coordinates[0]]} radius={50000} key={data.index}>
+                        <Circle center={[data.coordinates[1], data.coordinates[0]]} radius={50000} key={data.index} 
+                        eventHandlers={{
+                                click: () => {
+                                    setSingleCoordinate({
+                                        lat: data.coordinates[1],
+                                        lng: data.coordinates[0]
+                                    })
+                                }
+                            }}>
                             <Popup>
-                                <Link to={'/'}>See detail</Link>
+                                <Link to={'/detail'} className="uppercase font-semibold">Lihat detail</Link>
                             </Popup>
                         </Circle>
                         </>
@@ -57,6 +70,7 @@ function SimpleMap(props: LatLngLiteral) {
                 })
             }
             </MapContainer>
+            </div>
             </div>
         </div>
         </>

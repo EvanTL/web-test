@@ -1,11 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import SimpleMap from './components/simpleMap';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import NavBar from './components/NavBar';
-import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
+import CoordinateDetailsPage from './pages/CoordinateDetailPage';
+import SimpleMap from './components/simpleMap';
 
 function App() {
   return (
@@ -13,7 +12,8 @@ function App() {
       <Router>
       <NavBar/>
       <Routes>
-        <Route path='/' element={<HomePage/>}/>
+        <Route path='/' element={<SimpleMap {...{lat: -5.551, lng: 114.60}}/>}/>
+        <Route path='/detail' element={<CoordinateDetailsPage/>}/>
         <Route path='/about' element={<AboutPage/>}/>
       </Routes>
       </Router>

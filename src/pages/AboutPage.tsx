@@ -4,7 +4,7 @@ const AboutPage = () => {
     return(
         <>
         <h1 className="uppercase relative z-10 top-[8rem] text-white text-[32px] font-bold">Tentang Kami</h1>
-        <div className="relative bg-white top-[265px] max-w-full">
+        <div className="relative bg-white top-[230px] max-w-full">
         <p className="text-lg leading-[21.78px] relative text-left top-[50px] mx-3 pb-8">    
             Kaleka (formerly Yayasan Inobu) is an Indonesian, non-profit organization that strives towards the sustainable management 
             of Indonesia's landscapes and seascapes for the benefit of local and indigenous communities. Founded in 2014, Kaleka is a 
