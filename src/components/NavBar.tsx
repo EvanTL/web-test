@@ -13,7 +13,7 @@ const NavBar = () => {
     return(
         <>
         <div className="h-[103px] max-w-full bg-[#000000] relative z-10">
-            <img src={logo} className="w-[192px] h-[67px] relative top-5 left-4"/>
+            <img src={logo} alt="Kaleka logo" className="w-[192px] h-[67px] relative top-5 left-4"/>
             <div className="group relative">
                 <button className="relative flex float-right w-fit h-fit bottom-7 right-4 lg:hidden"
                 onClick={handleDropdown}>

@@ -6,9 +6,10 @@ import { Link } from "react-router-dom";
 import { LatLngLiteral } from "leaflet";
 
 const CoordinateDetails = (props: LatLngLiteral) => {
+    //Importing state used to pass coordinate
     const {singleCoordinate} = useCoordinateContext()
 
-    //Using console.lohg to verify that data is passed correctly from HomePage(Beranda)
+    //Using console.log to verify that data is passed correctly from HomePage(Beranda)
     console.log(singleCoordinate)
 
     return(

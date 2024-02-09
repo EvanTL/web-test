@@ -1,11 +1,11 @@
 import React from "react";
+import Banner from "../components/Banner";
 
 const AboutPage = () => {
     return(
         <>
-        <h1 className="uppercase relative z-10 top-[8rem] text-white text-[32px] font-bold">Tentang Kami</h1>
-        <div className="relative bg-white top-[230px] max-w-full">
-        <p className="text-lg leading-[21.78px] relative text-left top-[50px] mx-3 pb-8">    
+        <Banner title="Tentang Kami"/>
+        <p className="text-lg leading-[21.78px] relative text-justify top-[50px] mx-5 pb-8">    
             Kaleka (formerly Yayasan Inobu) is an Indonesian, non-profit organization that strives towards the sustainable management 
             of Indonesia's landscapes and seascapes for the benefit of local and indigenous communities. Founded in 2014, Kaleka is a 
             women-led organization, where the Executive Director and majority of managers and staff are women. With over 60 staff now, 
@@ -32,7 +32,6 @@ const AboutPage = () => {
         <span className="font-bold underline">Purpose</span><br/>
         To work with farmers, including younger generations, to protect nature.
         We aim to achieve our vision and mission through our four strategic initiatives.</p>
-        </div>
         </>
     )
 }

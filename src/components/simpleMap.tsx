@@ -34,7 +34,7 @@ function SimpleMap(props: LatLngLiteral) {
     return(
         <>
         <Banner title={null}/>
-        <div className="relative bg-white lg:top-[278px] h-[600px]">
+        <div className="relative bg-white h-[600px]">
             <div className="relative top-[50px]">
             <div className="h-[477px] lg:flex lg:justify-center">
             <MapContainer center={[props.lat, props.lng]} zoom={5} 
