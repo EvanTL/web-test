@@ -3,6 +3,7 @@ import { Circle, MapContainer, Popup, TileLayer } from "react-leaflet";
 import 'leaflet/dist/leaflet.css'
 import type { LatLngLiteral } from "leaflet";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function SimpleMap(props: LatLngLiteral) {
 
@@ -23,13 +24,16 @@ function SimpleMap(props: LatLngLiteral) {
         })
         .catch(err => console.log(err))
     }, [])
-    console.log(coordinates)
+
+    const coordetail = () => {
+        
+    }
     
     return(
         <>
-        <div className="relative bg-white top-[314px]">
-            <div className="relative top-[100px]">
-            <MapContainer center={[props.lat, props.lng]} zoom={5} style={{height: "477px", width: "828px", left: "326px"}}>
+        <div className="relative bg-white top-[314px] h-[600px]">
+            <div className="relative top-[50px]">
+            <MapContainer center={[props.lat, props.lng]} zoom={5} style={{height: "477px", width: "828px", left: "380px"}}>
             <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -45,7 +49,7 @@ function SimpleMap(props: LatLngLiteral) {
                         <>
                         <Circle center={[data.coordinates[1], data.coordinates[0]]} radius={50000} key={data.index}>
                             <Popup>
-                                <a>See detail</a>
+                                <Link to={'/'}>See detail</Link>
                             </Popup>
                         </Circle>
                         </>
