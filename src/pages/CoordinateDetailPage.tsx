@@ -7,7 +7,7 @@ const CoordinateDetailsPage = () => {
         <>
         <Banner title="Detail Coordinate"/>
         <div className="relative top-[50px] h-[535px]">
-            <CoordinateDetails {...{lat: -5.551, lng: 114.60}}/>
+            <CoordinateDetails/>
         </div>
         </>
     )

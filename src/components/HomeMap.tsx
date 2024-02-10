@@ -1,25 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { Circle, MapContainer, Popup, TileLayer } from "react-leaflet";
 import 'leaflet/dist/leaflet.css'
-import type { LatLngLiteral } from "leaflet";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useCoordinateContext } from "../context/CoordinateContext";
 
-function HomeMap(props: LatLngLiteral) {
+function HomeMap() {
 
     //Using state to house data fetched from API
     const [coordinates, setCoordinates] = useState([])
 
     //Using context to pass data to detail page
-    const {setSingleCoordinate, singleCoordinate} = useCoordinateContext()
-    console.log(singleCoordinate)
+    const {setSingleCoordinate, singleCoordinate, centerlatlng} = useCoordinateContext()
+    
+    console.log(singleCoordinate) //Using console.log to verify initial value and that data is passed correctly from HomePage(Beranda)
 
     /* Fetches data from API for coordinates
     * wrapped in useEffect() with empty dependency array to prevent
     * unnecessary calls, by having it run only on initial render.
     * 
-    * I also destructed key 'data' because I fetched with axios and there are other keys in the response data
+    * I also destructed key 'data' because I fetched with axios and there are other keys in the response data,
+    * using setState to pass response data outside axios scope
     */
     useEffect(() => {
         axios.get(`https://run.mocky.io/v3/07e88d94-b1de-4e13-89c3-1851cc16019b`)
@@ -34,7 +35,7 @@ function HomeMap(props: LatLngLiteral) {
         <>
         <div className="relative h-[400px]">
             <div className="h-[477px] lg:flex lg:justify-center">
-            <MapContainer center={[props.lat, props.lng]} zoom={5} 
+            <MapContainer center={[centerlatlng.lat, centerlatlng.lng]} zoom={5} 
             className="object-contain h-[477px] lg:w-[1024px] align-middle">
             <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

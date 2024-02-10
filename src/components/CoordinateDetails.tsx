@@ -3,11 +3,10 @@ import { Circle, MapContainer, Popup, TileLayer } from "react-leaflet";
 import 'leaflet/dist/leaflet.css'
 import { useCoordinateContext } from "../context/CoordinateContext";
 import { Link } from "react-router-dom";
-import { LatLngLiteral } from "leaflet";
 
-const CoordinateDetails = (props: LatLngLiteral) => {
-    //Importing state used to pass coordinate
-    const {singleCoordinate} = useCoordinateContext()
+const CoordinateDetails = () => {
+    //Importing state used to pass coordinate and center lat lng for map center
+    const {singleCoordinate, centerlatlng} = useCoordinateContext()
 
     //Using console.log to verify that data is passed correctly from HomePage(Beranda)
     console.log(singleCoordinate)
@@ -15,7 +14,7 @@ const CoordinateDetails = (props: LatLngLiteral) => {
     return(
         <>
         <div className="h-[477px] lg:flex lg:justify-center">
-        <MapContainer center={[props.lat, props.lng]} zoom={5}
+        <MapContainer center={[centerlatlng.lat, centerlatlng.lng]} zoom={5}
         className="object-contain h-[477px] lg:w-[1024px] align-middle">
         <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
