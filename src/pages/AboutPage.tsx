@@ -1,9 +1,11 @@
 import React from "react";
 import Banner from "../components/Banner";
+import NavBar from "../components/NavBar";
 
 const AboutPage = () => {
     return(
         <>
+        <NavBar/>
         <Banner title="Tentang Kami"/>
         <p className="text-lg leading-[21.78px] relative text-justify top-[50px] mx-5 pb-8">    
             Kaleka (formerly Yayasan Inobu) is an Indonesian, non-profit organization that strives towards the sustainable management 
