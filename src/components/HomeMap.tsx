@@ -5,15 +5,18 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useCoordinateContext } from "../context/CoordinateContext";
 
+interface errMessage {
+    message?: string
+}
+
 function HomeMap() {
 
     //Using state to house data fetched from API
     const [coordinates, setCoordinates] = useState([])
+    const [errMessage, setErrMessage] = useState<errMessage>()
 
     //Using context to pass data to detail page
     const {setSingleCoordinate, singleCoordinate, centerlatlng} = useCoordinateContext()
-    
-    console.log(singleCoordinate) //Using console.log to verify initial value and that data is passed correctly from HomePage(Beranda)
 
     /* Fetches data from API for coordinates
     * wrapped in useEffect() with empty dependency array to prevent
@@ -28,15 +31,21 @@ function HomeMap() {
             const {data} = res
             setCoordinates(data.data)
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.log(err)
+            setErrMessage({
+                message: err.message
+            })
+        })
     }, [])
+
+    console.log(singleCoordinate) //Using console.log to verify initial value and that data is passed correctly from click event
     
     return(
         <>
-        <div className="relative h-[400px]">
-            <div className="h-[477px] lg:flex lg:justify-center">
+            <div className="h-[277px] mx-5 lg:h-[477px] lg:flex lg:justify-center">
             <MapContainer center={[centerlatlng.lat, centerlatlng.lng]} zoom={5} 
-            className="object-contain h-[477px] lg:w-[1024px] align-middle">
+            className="object-contain h-full lg:w-[1024px] align-middle">
             <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -69,7 +78,7 @@ function HomeMap() {
             }
             </MapContainer>
             </div>
-        </div>
+            {errMessage && <h1 className="text-xl text-red-800 font-bold mt-4">Error: {errMessage.message}</h1>}
         </>
     )
 }

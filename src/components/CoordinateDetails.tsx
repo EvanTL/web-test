@@ -13,9 +13,9 @@ const CoordinateDetails = () => {
 
     return(
         <>
-        <div className="h-[477px] lg:flex lg:justify-center">
+        <div className="h-[277px] mx-5 lg:h-[477px] lg:flex lg:justify-center">
         <MapContainer center={[centerlatlng.lat, centerlatlng.lng]} zoom={5}
-        className="object-contain h-[477px] lg:w-[1024px] align-middle">
+        className="object-contain h-full lg:w-[1024px] align-middle">
         <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
