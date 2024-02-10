@@ -5,15 +5,10 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useCoordinateContext } from "../context/CoordinateContext";
 
-interface errMessage {
-    message?: string
-}
-
 function HomeMap() {
 
     //Using state to house data fetched from API
     const [coordinates, setCoordinates] = useState([])
-    const [errMessage, setErrMessage] = useState<errMessage>()
 
     //Using context to pass data to detail page
     const {setSingleCoordinate, singleCoordinate, centerlatlng} = useCoordinateContext()
@@ -33,9 +28,6 @@ function HomeMap() {
         })
         .catch(err => {
             console.log(err)
-            setErrMessage({
-                message: err.message
-            })
         })
     }, [])
 
@@ -78,7 +70,6 @@ function HomeMap() {
             }
             </MapContainer>
             </div>
-            {errMessage && <h1 className="text-xl text-red-800 font-bold mt-4">Error: {errMessage.message}</h1>}
         </>
     )
 }
