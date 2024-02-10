@@ -12,8 +12,8 @@ const CoordinateDetails = () => {
     console.log(singleCoordinate)
 
     return(
-        <>
-        <div className="h-[277px] mx-5 lg:h-[477px] lg:flex lg:justify-center">
+        <div className="mx-5">
+        <div className="h-[277px] lg:h-[477px] lg:flex lg:justify-center">
         <MapContainer center={[centerlatlng.lat, centerlatlng.lng]} zoom={5}
         className="object-contain h-full lg:w-[1024px] align-middle">
         <TileLayer
@@ -28,7 +28,7 @@ const CoordinateDetails = () => {
         </MapContainer>
         </div>
         <h1 className="text-xl font-bold mt-4">Coordinates Details: {singleCoordinate.lng}, {singleCoordinate.lat}</h1>
-        </>
+        </div>
     )
 }
 
